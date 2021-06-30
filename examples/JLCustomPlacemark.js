@@ -77,20 +77,17 @@ requirejs(['./WorldWindShim',
         ctx2d.fill();
 
         // Create the custom image for the placemark with a 2D canvas.
-        var JLcanvas = document.createElement("JLcanvas"),
-            ctxJL = canvas.getContext("2d")
+        var JLcanvas = document.getElementById("JLcanvas"),
+            ctxJL = JLcanvas.getContext("2d")
 
 
         // Create path
-        let region = new Path2D();
-        region.moveTo(100, 100);
-        region.lineTo(300, 100);
-        region.lineTo(200, 200);
-        region.closePath();
-
-        // Fill path
-        ctxJL.fillStyle = 'black';
-        ctxJL.fill(region, 'nonzero');
+        ctxJL.moveTo(25,25);
+        ctxJL.lineTo(75,25);
+        ctxJL.lineTo(50,50);
+        ctxJL.lineTo(25,25);
+        ctxJL.fill();
+        ctxJL.stroke();
 
         // Set placemark attributes.
         var placemarkAttributes = new WorldWind.PlacemarkAttributes(null);
@@ -104,7 +101,7 @@ requirejs(['./WorldWindShim',
         // Set Jason placemark attributes.
         var JLplacemarkAttributes = new WorldWind.PlacemarkAttributes(null);
         // Wrap the canvas created above in an ImageSource object to specify it as the JLplacemarkAttributes image source.
-        JLplacemarkAttributes.imageSource = new WorldWind.ImageSource(canvas);
+        JLplacemarkAttributes.imageSource = new WorldWind.ImageSource(JLcanvas);
         // Define the pivot point for the placemark at the center of its image source.
         JLplacemarkAttributes.imageOffset = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0.5, WorldWind.OFFSET_FRACTION, 0.5);
         JLplacemarkAttributes.imageScale = 1;

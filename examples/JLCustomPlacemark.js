@@ -126,6 +126,9 @@ requirejs(['./WorldWindShim',
         var JLplacemarkPosition = new WorldWind.Position(40.428444, -74.359802, 1e2);
         var JLplacemark = new WorldWind.Placemark(JLplacemarkPosition, false, JLplacemarkAttributes);
 
+        var NAAPosition = new WorldWind.Position(41.452349, -74.439253, 1e2);
+        var NAAplacemark = new WorldWind.Placemark(NAAPosition, false, JLplacemarkAttributes);
+
         // Create the renderable layer for placemarks.
         var placemarkLayer = new WorldWind.RenderableLayer("Custom Placemark");
         var JLplacemarkLayer = new WorldWind.RenderableLayer("Jason Placemark");
@@ -133,6 +136,7 @@ requirejs(['./WorldWindShim',
         // Add the placemarks to the layer.
         placemarkLayer.addRenderable(placemark);
         JLplacemarkLayer.addRenderable(JLplacemark);
+        JLplacemarkLayer.addRenderable(NAAplacemark);
 
         // Add the placemarks layer to the WorldWindow's layer list.
         wwd.addLayer(placemarkLayer);
